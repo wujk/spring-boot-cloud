@@ -11,6 +11,7 @@
         <module>Spring-Boot-First</module>
         <module>spring-boot-properties</module>
         <module>spring-boot-JdbcTemplates</module>
+        <module>spring-boot-jpa</module>
     </modules>
     <packaging>pom</packaging>
 
