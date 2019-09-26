@@ -10,6 +10,7 @@
     <modules>
         <module>Spring-Boot-First</module>
         <module>spring-boot-properties</module>
+        <module>spring-boot-JdbcTemplates</module>
     </modules>
     <packaging>pom</packaging>
 
