@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@EnableConfigurationProperties({User.class})
+@EnableConfigurationProperties({User.class, UserInfo.class})
 public class UserController {
 
     @Value("${my.name}")
@@ -19,6 +19,9 @@ public class UserController {
     @Autowired
     private User user;
 
+    @Autowired
+    private UserInfo userInfo;
+
     @RequestMapping("info")
     public String info() {
         return name + ":" + age;
@@ -27,5 +30,10 @@ public class UserController {
     @RequestMapping("user")
     public String user() {
         return user.toString();
+    }
+
+    @RequestMapping("userInfo")
+    public String userInfo() {
+        return userInfo.toString();
     }
 }

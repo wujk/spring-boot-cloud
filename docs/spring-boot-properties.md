@@ -61,6 +61,28 @@
 
 -    加入@EnableConfigurationProperties({User.class})这个注解，配置类@Component可以不加，配置类加了@Component，调用时可以不加@EnableConfigurationProperties({User.class})
 
+
+4、自定义配置文件如：test.properties （加入注解@PropertySource("classpath:test.properties")）
+- 
+    @ConfigurationProperties(prefix="test.test")
+    @PropertySource("classpath:test.properties")
+    @Component
+    public class UserInfo {
+   
+        private String name;
+        private int age;
+           
+5、多配置文件选择
+- 
+    application-dev.yml
+    application-sit.yml
+    
+    
+    spring:
+      profiles:
+        active: sit #启用sit
+    
+
    
     
 
