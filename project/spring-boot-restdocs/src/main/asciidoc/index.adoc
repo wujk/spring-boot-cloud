@@ -1,0 +1,20 @@
+= Learn Spring REST Docs
+:toc: left
+
+Learn how to use Spring REST Docs based on Spring Boot2 and JUnit5.
+
+== /hello接口
+
+.request
+include::{snippets}/home1/http-request.adoc[]
+
+.response
+include::{snippets}/home1/http-response.adoc[]
+
+== /restdocs接口
+
+.request
+include::{snippets}/home2/http-request.adoc[]
+
+.response
+include::{snippets}/home2/http-response.adoc[]

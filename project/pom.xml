@@ -15,6 +15,7 @@
         <module>spring-boot-mybatis</module>
         <module>spring-boot-mybatis-tx</module>
         <module>spring-boot-redis</module>
+        <module>spring-boot-restdocs</module>
     </modules>
     <packaging>pom</packaging>
 
