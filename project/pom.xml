@@ -16,6 +16,7 @@
         <module>spring-boot-mybatis-tx</module>
         <module>spring-boot-redis</module>
         <module>spring-boot-restdocs</module>
+        <module>spring-boot-swagger2</module>
     </modules>
     <packaging>pom</packaging>
 
