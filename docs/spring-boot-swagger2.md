@@ -80,6 +80,8 @@
     @ApiError ：发生错误返回的信息
     @ApiImplicitParam：一个请求参数
     @ApiImplicitParams 多个请求参数
+    
+- 启动工程，访问：http://localhost:8080/swagger-ui.html ，就看到swagger-ui
  
   
 
