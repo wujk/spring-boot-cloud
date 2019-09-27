@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wujk.springbootmybatistx.AccountMapper">
+	<resultMap id="BaseResultMap" type="com.wujk.springbootmybatistx.Account">
+		 <id column="UID" jdbcType="VARCHAR" property="uid" />
+    	<result column="COMPANY_UID" jdbcType="VARCHAR" property="companyUid" />
+    	<result column="PHONE" jdbcType="VARCHAR" property="phone" />
+    	<result column="PASSWD" jdbcType="VARCHAR" property="passwd" />
+    	<result column="ENABLE" jdbcType="INTEGER" property="enable" />
+	    <result column="IP" jdbcType="VARCHAR" property="ip" />
+	    <result column="BROWSER" jdbcType="VARCHAR" property="browser" />
+	    <result column="LOGINTIME" jdbcType="BIGINT" property="logintime" />
+	    <result column="GUIDE" jdbcType="BIT" property="guide" />
+	    <result column="CREATE_TIME" jdbcType="BIGINT" property="createTime" />
+	    <result column="CREATE_USER" jdbcType="VARCHAR" property="createUser" />
+	    <result column="UPDATE_TIME" jdbcType="BIGINT" property="updateTime" />
+	    <result column="UPDATE_USER" jdbcType="VARCHAR" property="updateUser" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		UID, COMPANY_UID, PHONE, PASSWD, ENABLE, IP,BROWSER, LOGINTIME,GUIDE, 
+    CREATE_TIME, CREATE_USER, UPDATE_TIME, UPDATE_USER
+	</sql>
+	<insert id="insert" parameterType="com.wujk.springbootmybatistx.Account">
+    insert into ACCOUNT (UID, COMPANY_UID, PHONE, 
+	      PASSWD, ENABLE,
+	      IP, BROWSER, 
+	      LOGINTIME, GUIDE,CREATE_TIME, CREATE_USER, 
+	      UPDATE_TIME, UPDATE_USER
+	      )
+	    values (#{uid,jdbcType=VARCHAR}, #{companyUid,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+	      #{passwd,jdbcType=VARCHAR}, #{enable,jdbcType=INTEGER},
+	      #{ip,jdbcType=VARCHAR}, #{browser,jdbcType=VARCHAR}, 
+	      #{logintime,jdbcType=BIGINT},#{guide,jdbcType=BIT}, #{createTime,jdbcType=BIGINT}, #{createUser,jdbcType=VARCHAR}, 
+	      #{updateTime,jdbcType=BIGINT}, #{updateUser,jdbcType=VARCHAR}
+	      )
+ 	 </insert>
+	 <insert id="insertSelective" parameterType="com.wujk.springbootmybatistx.Account">
+	    insert into ACCOUNT
+	    <trim prefix="(" suffix=")" suffixOverrides=",">
+	      <if test="uid != null">
+	        UID,
+	      </if>
+	      <if test="companyUid != null">
+	        COMPANY_UID,
+	      </if>
+	      <if test="phone != null">
+	        PHONE,
+	      </if>
+	      <if test="passwd != null">
+	        PASSWD,
+	      </if>
+	      <if test="enable != null">
+	        ENABLE,
+	      </if>
+	      <if test="ip != null">
+	        IP,
+	      </if>
+	      <if test="browser != null">
+	        BROWSER,
+	      </if>
+	      <if test="logintime != null">
+	        LOGINTIME,
+	      </if>
+	      <if test="guide != null">
+	        GUIDE,
+	      </if>
+	      <if test="createTime != null">
+	        CREATE_TIME,
+	      </if>
+	      <if test="createUser != null">
+	        CREATE_USER,
+	      </if>
+	      <if test="updateTime != null">
+	        UPDATE_TIME,
+	      </if>
+	      <if test="updateUser != null">
+	        UPDATE_USER,
+	      </if>
+	    </trim>
+	    <trim prefix="values (" suffix=")" suffixOverrides=",">
+	      <if test="uid != null">
+	        #{uid,jdbcType=VARCHAR},
+	      </if>
+	      <if test="companyUid != null">
+	        #{companyUid,jdbcType=VARCHAR},
+	      </if>
+	      <if test="phone != null">
+	        #{phone,jdbcType=VARCHAR},
+	      </if>
+	      <if test="passwd != null">
+	        #{passwd,jdbcType=VARCHAR},
+	      </if>
+	      <if test="enable != null">
+	        #{enable,jdbcType=INTEGER},
+	      </if>
+	      <if test="ip != null">
+	        #{ip,jdbcType=VARCHAR},
+	      </if>
+	      <if test="browser != null">
+	        #{browser,jdbcType=VARCHAR},
+	      </if>
+	      <if test="logintime != null">
+	        #{logintime,jdbcType=BIGINT},
+	      </if>
+	      <if test="guide != null">
+	        #{guide,jdbcType=BIT},
+	      </if>
+	      <if test="createTime != null">
+	        #{createTime,jdbcType=BIGINT},
+	      </if>
+	      <if test="createUser != null">
+	        #{createUser,jdbcType=VARCHAR},
+	      </if>
+	      <if test="updateTime != null">
+	        #{updateTime,jdbcType=BIGINT},
+	      </if>
+	      <if test="updateUser != null">
+	        #{updateUser,jdbcType=VARCHAR},
+	      </if>
+	    </trim>
+	  </insert>
+</mapper>

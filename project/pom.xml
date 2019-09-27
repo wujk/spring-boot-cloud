@@ -13,6 +13,7 @@
         <module>spring-boot-JdbcTemplates</module>
         <module>spring-boot-jpa</module>
         <module>spring-boot-mybatis</module>
+        <module>spring-boot-mybatis-tx</module>
     </modules>
     <packaging>pom</packaging>
 
