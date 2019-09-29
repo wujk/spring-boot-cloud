@@ -19,6 +19,8 @@
         <module>spring-boot-swagger2</module>
         <module>spring-boot-cache</module>
         <module>spring-boot-redis-queue</module>
+        <module>spring-boot-rabbitMQ</module>
+        <module>spring-boot-restTemplate</module>
     </modules>
     <packaging>pom</packaging>
 
