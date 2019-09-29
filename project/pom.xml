@@ -22,6 +22,7 @@
         <module>spring-boot-rabbitMQ</module>
         <module>spring-boot-restTemplate</module>
         <module>spring-boot-fileUpload</module>
+        <module>spring-boot-scheduling-task</module>
     </modules>
     <packaging>pom</packaging>
 

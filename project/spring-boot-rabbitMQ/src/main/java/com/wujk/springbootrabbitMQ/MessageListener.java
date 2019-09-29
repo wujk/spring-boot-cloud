@@ -23,6 +23,7 @@ public class MessageListener {
 
     @Bean
     TopicExchange exchange() {
+
         return new TopicExchange("spring-boot-exchange");
     }
 
