@@ -17,6 +17,7 @@
         <module>spring-boot-redis</module>
         <module>spring-boot-restdocs</module>
         <module>spring-boot-swagger2</module>
+        <module>spring-boot-cache</module>
     </modules>
     <packaging>pom</packaging>
 
