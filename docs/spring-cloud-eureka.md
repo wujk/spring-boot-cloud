@@ -1,4 +1,4 @@
-**spring-boot-eureka**
+**spring-cloud-eureka**
 
 1、引入jar包
 - 
