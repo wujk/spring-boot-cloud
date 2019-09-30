@@ -24,6 +24,7 @@
         <module>spring-boot-fileUpload</module>
         <module>spring-boot-scheduling-task</module>
         <module>spring-boot-async</module>
+        <module>spring-boot-mail</module>
     </modules>
     <packaging>pom</packaging>
 
