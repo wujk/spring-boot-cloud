@@ -25,6 +25,7 @@
         <module>spring-boot-scheduling-task</module>
         <module>spring-boot-async</module>
         <module>spring-boot-mail</module>
+        <module>spring-cloud</module>
     </modules>
     <packaging>pom</packaging>
 
