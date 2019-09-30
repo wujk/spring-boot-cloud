@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>spring-boot-eureka</artifactId>
+    <artifactId>spring-cloud-eureka</artifactId>
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>

@@ -12,7 +12,7 @@
     <artifactId>spring-cloud</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>spring-boot-eureka</module>
+        <module>spring-cloud-eureka</module>
     </modules>
 
     <properties>
