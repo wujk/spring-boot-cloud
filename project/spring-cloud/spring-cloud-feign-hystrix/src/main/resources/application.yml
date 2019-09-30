@@ -1,5 +1,5 @@
 server:
-  port: 8763
+  port: 8768
 
 eureka:
   client:
@@ -8,4 +8,8 @@ eureka:
 
 spring:
   application:
-    name: cloud-server
+    name: feign-hystrix-server
+
+feign:
+  hystrix:
+    enabled: true

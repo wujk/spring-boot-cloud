@@ -1,4 +1,4 @@
-**spring-cloud-feign**
+**spring-cloud-ribbon-hystrix**
 
 ## 客户端配置
 1、引入jar包
@@ -13,13 +13,17 @@
     </dependency>
     <dependency>
         <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-openfeign</artifactId>
+        <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
     </dependency>
     
 2、配置文件（application.yml）
 -
     server:
-      port: 8766
+      port: 8767
     
     eureka:
       client:
@@ -28,44 +32,43 @@
     
     spring:
       application:
-        name: feign-server
+        name: ribbon-hystrix-server
         
 3、启动
 -
     @SpringBootApplication
     @EnableEurekaClient
-    @EnableFeignClients
-    public class FeignApplication {
+    public class RibbonAplication {
     
         public static void main(String[] args) {
-            SpringApplication.run(FeignApplication.class, args);
+            SpringApplication.run(RibbonAplication.class, args);
         }
     
+        @Bean
+        @LoadBalanced
+        RestTemplate restTemplate() {
+            return new RestTemplate();
+        }
     }
-   
-4、定义Feign接口
--
-    @FeignClient(value = "cloud-server")
-    public interface IFeign {
     
-        @RequestMapping(value = "/ribbon",method = RequestMethod.GET)
-        public String feign(@RequestParam(value = "name") String name);
-    }
-
-5、请求服务
+4、客户端请求
 -
     @RestController
-    public class FeignController {
+    public class RibbonHystrixController {
     
         @Autowired
-        private IFeign feign;
+        RestTemplate restTemplate;
     
-        @RequestMapping("feign")
-        public String feign(@RequestParam("name") String name) {
-            return feign.feign(name);
+        @RequestMapping("ribbon")
+        @HystrixCommand(fallbackMethod = "hiError")
+        public String ribbon(@RequestParam("name") String name) {
+            return restTemplate.getForObject("http://cloud-server/ribbon?name="+name,String.class);
+        }
+    
+        public String hiError(String name) {
+            return "Sorry !!!! " + name;
         }
     }
-
 
 ## 服务端配置
 1、 引入jar
@@ -120,10 +123,14 @@
     
 - 启动8763、8764两个服务端，请求客户端
 -
-        http://localhost:8765/feign?name=wujk
+        http://localhost:8765/ribbon?name=wujk
         ------------------------------------------- 
         Hello, wujk, the port is 8763
         Hello, wujk, the port is 8764
     
-
+- 关闭服务
+- 
+        http://localhost:8765/ribbon?name=wujk
+        ------------------------------------------- 
+        Sorry !!!! wujk
     

@@ -1,4 +1,4 @@
-**spring-cloud-feign**
+**spring-cloud-ribbon-hystrix**
 
 ## 客户端配置
 1、引入jar包
@@ -15,11 +15,15 @@
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-openfeign</artifactId>
     </dependency>
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+    </dependency>
     
 2、配置文件（application.yml）
 -
     server:
-      port: 8766
+      port: 8768
     
     eureka:
       client:
@@ -28,31 +32,46 @@
     
     spring:
       application:
-        name: feign-server
+        name: feign-hystrix-server
+    
+    feign:
+      hystrix:
+        enabled: true
         
 3、启动
 -
     @SpringBootApplication
     @EnableEurekaClient
     @EnableFeignClients
-    public class FeignApplication {
+    @EnableHystrix
+    public class FeignHystrixApplication {
     
         public static void main(String[] args) {
-            SpringApplication.run(FeignApplication.class, args);
+            SpringApplication.run(FeignHystrixApplication.class, args);
         }
     
     }
-   
+
 4、定义Feign接口
 -
-    @FeignClient(value = "cloud-server")
-    public interface IFeign {
+    @FeignClient(value = "cloud-server", fallback = FeignHystrixError.class)
+    public interface IFeignHystrix {
     
         @RequestMapping(value = "/ribbon",method = RequestMethod.GET)
         public String feign(@RequestParam(value = "name") String name);
     }
 
-5、请求服务
+5、定义FeignHystrixError实现IFeignHystrix接口
+-
+    @Component
+    public class FeignHystrixError implements IFeignHystrix{
+        @Override
+        public String feign(String name) {
+            return "Sorry !!! " + name;
+        }
+    }
+
+6、请求服务
 -
     @RestController
     public class FeignController {
@@ -65,8 +84,7 @@
             return feign.feign(name);
         }
     }
-
-
+       
 ## 服务端配置
 1、 引入jar
 -
@@ -125,5 +143,9 @@
         Hello, wujk, the port is 8763
         Hello, wujk, the port is 8764
     
-
+- 关闭服务
+- 
+        http://localhost:8765/feign?name=wujk
+        ------------------------------------------- 
+        Sorry !!!! wujk
     
