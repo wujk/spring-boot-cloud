@@ -16,6 +16,7 @@
         <module>spring-cloud-client-first</module>
         <module>spring-cloud-ribbon</module>
         <module>spring-cloud-server</module>
+        <module>spring-cloud-feign</module>
     </modules>
 
     <properties>
