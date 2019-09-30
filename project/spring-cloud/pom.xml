@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>spring-cloud-eureka</module>
+        <module>spring-cloud-client-first</module>
     </modules>
 
     <properties>
