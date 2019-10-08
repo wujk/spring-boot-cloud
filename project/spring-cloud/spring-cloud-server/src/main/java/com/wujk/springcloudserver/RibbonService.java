@@ -14,6 +14,7 @@ public class RibbonService {
 
     @RequestMapping(value = "ribbon", method = RequestMethod.GET)
     public String ribbon(@RequestParam("name") String name) {
+        System.out.println("Hello, " + name + ", the port is " + port);
         return "Hello, " + name + ", the port is " + port;
     }
 
