@@ -31,12 +31,12 @@ public class ErrorZuul2 extends ZuulFilter {
 
     @Override
     public Object run() {
-        System.out.println("ErrorZuul2 run: ");
+
         RequestContext ctx = RequestContext.getCurrentContext();
-        System.out.println(ctx.keySet());
         ctx.setSendZuulResponse(false);// 过滤该请求，不对其进行路由
         ctx.setResponseStatusCode(401);// 返回错误码
-        ctx.setResponseBody("{\"result\":\"username is not correct!!!!\"}");// 返回错误内容
+        ctx.setResponseBody("{\"result\":\"yichang!\"}");// 返回错误内容
+        ctx.set("isSuccess", false);
         return null;
     }
 }

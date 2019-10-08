@@ -45,10 +45,10 @@ public class ZuulServerApplication {
         return new RouteZuul2();
     }
 
-    /*@Bean
+    @Bean
     public ErrorZuul1 errorZuul1() {
         return new ErrorZuul1();
-    }*/
+    }
 
     @Bean
     public ErrorZuul2 errorZuul2() {
