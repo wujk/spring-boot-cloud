@@ -1,5 +1,3 @@
-**spring-cloud-config**
-
 # 服务端
 1、引入jar包
 - 
@@ -50,7 +48,7 @@
 
 # 客户端
 1、引入jar包
--
+- 
     <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-web</artifactId>
@@ -63,11 +61,19 @@
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
     </dependency>
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
     
-2、配置文件(bootstrap.preoperties)
+2、配置文件
 -
     spring.application.name=config-client
-    server.port=8769
+    server.port=8770  # 8769
     
     spring.cloud.config.label=master
     spring.cloud.config.profile=dev
@@ -77,11 +83,21 @@
     spring.cloud.config.discovery.enabled=true
     eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka/
     
+    spring.cloud.bus.enabled=true
+    spring.cloud.bus.trace.enabled=true
+    management.endpoints.web.exposure.include=bus-refresh
+    
+    spring.rabbitmq.host=127.0.0.1
+    spring.rabbitmq.port=5672
+    spring.rabbitmq.username=guest
+    spring.rabbitmq.password=guest
+
 3、启动
-- 
+-
     @SpringBootApplication
     @EnableEurekaClient
     @RestController
+    @RefreshScope
     public class ConfigClientApplication {
     
         @Value("${name}")
@@ -96,9 +112,7 @@
             return "hello, " + name;
         }
     }
-        
 
-
-
-
-   
+4、发送POST请求：
+- http://localhost:8769/actuator/bus-refresh 
+- /actuator/bus-refresh接口可以指定服务，即使用"destination"参数，比如 “/actuator/bus-refresh?destination=customers:**” 即刷新服务名为customers的所有服务。 

@@ -24,6 +24,7 @@
         <module>spring-cloud-config-client</module>
         <module>spring-cloud-config-server-distributed</module>
         <module>spring-cloud-config-client-distributed</module>
+        <module>spring-cloud-config-client-distributed-bus</module>
     </modules>
 
     <properties>
