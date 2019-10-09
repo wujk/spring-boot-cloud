@@ -1,0 +1,13 @@
+server:
+  port: 8757
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://peer1:8758/eureka/,http://peer2:8759/eureka/,http://peer3:8760/eureka/
+  instance:
+    prefer-ip-address: true  # 把真实ip注册到eureka
+
+spring:
+  application:
+    name: cloud-server-distributed

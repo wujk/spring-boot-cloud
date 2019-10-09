@@ -1,0 +1,16 @@
+server:
+  port: 8760
+
+eureka:
+  instance:
+    #prefer-ip-address: true  # 把真实ip注册到eureka
+    hostname: peer1
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://peer2:8759/eureka/, http://peer3:8758/eureka/
+
+spring:
+  application:
+    name: eurka-server
