@@ -32,6 +32,8 @@
         <module>spring-cloud-zipkin-mid</module>
         <module>spring-cloud-zipkin-end</module>
         <module>spring-cloud-hystrix-dashboard</module>
+        <module>spring-cloud-hystrix-turbine</module>
+        <module>spring-cloud-hystrix-dashboard-another</module>
     </modules>
 
     <properties>

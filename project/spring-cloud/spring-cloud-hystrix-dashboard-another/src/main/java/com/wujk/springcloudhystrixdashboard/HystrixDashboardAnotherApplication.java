@@ -1,4 +1,4 @@
-package com.wujk.springclouddashboard;
+package com.wujk.springcloudhystrixdashboard;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.boot.SpringApplication;
@@ -15,15 +15,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @EnableHystrix
 @EnableHystrixDashboard
-public class HystrixDashboardApplication {
+public class HystrixDashboardAnotherApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(HystrixDashboardApplication.class, args);
+        SpringApplication.run(HystrixDashboardAnotherApplication.class, args);
     }
 
     @GetMapping("hello")
     @HystrixCommand
-    public String hello(@RequestParam(value = "name", defaultValue = "wujk") String name) {
+    public String hello(@RequestParam(value = "name", defaultValue = "majf") String name) {
         return "hello " + name;
     }
 
