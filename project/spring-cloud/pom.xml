@@ -28,6 +28,9 @@
         <module>spring-cloud-eureka-distributed</module>
         <module>spring-cloud-client-distributed</module>
         <module>spring-cloud-server-distributed</module>
+        <module>spring-cloud-zipkin-begin</module>
+        <module>spring-cloud-zipkin-mid</module>
+        <module>spring-cloud-zipkin-end</module>
     </modules>
 
     <properties>
