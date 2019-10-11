@@ -1,0 +1,18 @@
+spring:
+  profiles:
+    active: jdbc
+  application:
+    name: config-db-server
+  datasource:
+    url: jdbc:mysql://192.168.140.215:3306/config_server?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&serverTimezone=GMT%2B8
+    username: root
+    password: 111111
+    driver-class-name: com.mysql.jdbc.Driver
+  cloud:
+    config:
+      server:
+        jdbc:
+          sql: SELECT `KEY`, `VALUE` from `PROPERTIES` where APPLICATION=? and PROFILE=? and LABEL=?
+
+server:
+  port: 8889

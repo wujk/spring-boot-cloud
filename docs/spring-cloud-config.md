@@ -1,4 +1,4 @@
-**spring-cloud-zuul**
+**spring-cloud-config**
 
 # 服务端
 1、引入jar包
