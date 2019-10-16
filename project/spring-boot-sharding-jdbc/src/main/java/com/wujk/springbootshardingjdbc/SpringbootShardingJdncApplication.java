@@ -1,0 +1,14 @@
+package com.wujk.springbootshardingjdbc;
+
+import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
+
+@SpringBootApplication(exclude = {DruidDataSourceAutoConfigure.class})
+public class SpringbootShardingJdncApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(SpringbootShardingJdncApplication.class, args);
+    }
+}
