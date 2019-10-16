@@ -64,7 +64,7 @@
       mapper-locations: classpath*:mybatis/*Mapper.xml
       type-aliases-package: com.wujk.springbootshardingjdbc
       
-数据库配置(分表+读写分离) 用于分表的字段不能为空即使是自增长主键
+2.1 数据库配置(分表+读写分离) 用于分表的字段不能为空即使是自增长主键
 -
     sharding:
       jdbc:
