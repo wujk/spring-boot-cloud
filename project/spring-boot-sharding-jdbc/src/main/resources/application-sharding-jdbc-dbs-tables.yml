@@ -1,0 +1,58 @@
+sharding:
+  jdbc:
+    datasource:
+      names: db-master-0,db-master-1,db-slave-0,db-slave-1 # 名称之间不可以出现空格
+      db-master-0: #org.apache.tomcat.jdbc.pool.DataSource
+        type: com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.jdbc.Driver
+        url: jdbc:mysql://192.168.140.77:3306/cool?useUnicode=true&characterEncoding=utf8&tinyInt1isBit=false&useSSL=false&serverTimezone=GMT
+        username: root
+        password: 123456
+        #最大连接数
+        maxPoolSize: 20
+      db-master-1: #org.apache.tomcat.jdbc.pool.DataSource
+        type: com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.jdbc.Driver
+        url: jdbc:mysql://192.168.140.77:3306/cool2?useUnicode=true&characterEncoding=utf8&tinyInt1isBit=false&useSSL=false&serverTimezone=GMT
+        username: root
+        password: 123456
+        #最大连接数
+        maxPoolSize: 20
+      db-slave-0: # 配置第一个从库
+        type: com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.jdbc.Driver
+        url: jdbc:mysql://192.168.140.159:3306/cool?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&serverTimezone=GMT
+        username: root
+        password: 123456
+        maxPoolSize: 20
+      db-slave-1: # 配置第一个从库
+        type: com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.jdbc.Driver
+        url: jdbc:mysql://192.168.140.159:3306/cool2?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&serverTimezone=GMT
+        username: root
+        password: 123456
+        maxPoolSize: 20
+    config:
+      sharding:
+        default-database-strategy:
+          inline:
+            sharding-column: id
+            algorithm-expression: ds_$->{id % 2}
+        tables:
+          User:
+            actual-data-nodes: ds_$->{0..1}.User_$->{0..3}
+            table-strategy:
+              inline:
+                sharding-column: id
+                algorithm-expression: User_$->{id % 4}
+            key-generator-column-name: id
+        master-slave-rules:
+          ds_0:
+            master-data-source-name: db-master-0
+            slave-data-source-names: db-slave-0
+          ds_1:
+            master-data-source-name: db-master-1
+            slave-data-source-names: db-slave-1
+    props:
+      sql: # 开启SQL显示，默认值: false，注意：仅配置读写分离时不会打印日志！！！
+        show: true

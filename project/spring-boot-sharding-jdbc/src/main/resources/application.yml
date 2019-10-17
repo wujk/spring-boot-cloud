@@ -3,4 +3,4 @@ mybatis:
   type-aliases-package: com.wujk.springbootshardingjdbc
 spring:
   profiles:
-    active: sharding-jdbc-tables
+    active: sharding-jdbc-dbs-tables-test

@@ -12,9 +12,21 @@
         insert into User (id, name)
 	    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
     </insert>
+    <insert id="batchInsert" parameterType="list">
+        insert into User (id, name)
+	    values
+	    <foreach collection="list" item="item" index="index" open="" close="" separator=",">
+            (#{item.id,jdbcType=INTEGER}, #{item.name,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
     <select id="list" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from User
+    </select>
+    <select id="listByPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from User order by id asc limit #{pageNumber}, #{pageSize}
     </select>
 </mapper>
