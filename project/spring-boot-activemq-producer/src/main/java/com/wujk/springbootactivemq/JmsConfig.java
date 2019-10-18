@@ -36,12 +36,9 @@ public class JmsConfig {
         return new ActiveMQTopic("spring.boot.topic");
     }
 
-   /* @Bean
-    public JmsTemplate jmsTemplate(ConnectionFactory connectionFactory) {
-        LOG.debug("init jms template with converter.");
-        JmsTemplate template = new JmsTemplate();
-        template.setConnectionFactory(connectionFactory); // JmsTemplate使用的connectionFactory跟JmsTransactionManager使用的必须是同一个，不能在这里封装成caching之类的。
-        return template;
-    }*/
+    @Bean
+    public PlatformTransactionManager transactionManager(ConnectionFactory connectionFactory) {
+        return new JmsTransactionManager(connectionFactory);
+    }
 
 }

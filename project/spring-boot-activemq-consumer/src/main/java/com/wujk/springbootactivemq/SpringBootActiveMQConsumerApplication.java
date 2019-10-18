@@ -2,18 +2,18 @@ package com.wujk.springbootactivemq;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.annotation.JmsListener;
+import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootApplication
-@EnableJms
 public class SpringBootActiveMQConsumerApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SpringBootActiveMQConsumerApplication.class, args);
     }
 
-    @JmsListener(destination = "spring.boot.queue")
+    @JmsListener(destination = "spring.boot.queue", containerFactory="msgFactoryQueue")
+    @Transactional
     public void consumerQueue(String msg) {
         System.out.println("consumerQueue: " + msg);
     }
