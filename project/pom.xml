@@ -30,6 +30,8 @@
         <module>spring-boot-dubbo-client</module>
         <module>spring-boot-logstash</module>
         <module>spring-boot-sharding-jdbc</module>
+        <module>spring-boot-activemq-producer</module>
+        <module>spring-boot-activemq-consumer</module>
     </modules>
     <packaging>pom</packaging>
 
