@@ -32,6 +32,7 @@
         <module>spring-boot-sharding-jdbc</module>
         <module>spring-boot-activemq-producer</module>
         <module>spring-boot-activemq-consumer</module>
+        <module>spring-boot-activemq-db</module>
     </modules>
     <packaging>pom</packaging>
 
